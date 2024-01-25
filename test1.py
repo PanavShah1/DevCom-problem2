@@ -76,10 +76,6 @@ class SyncService:
             elif data['type'] == 'probe':
                 dev_id = data['dev_id']
                 _from = data['from']
-                
-                if _from > len(self.records):
-                    raise ValueError(f"Invalid 'from' index {_from} for device {dev_id}")
-
                 updates = self.records[_from:]
                 response = {'type': 'update', 'from': _from, 'data': updates, 'dev_id': dev_id}
                 return response
